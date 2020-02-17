@@ -39,6 +39,11 @@ public class KlarnaView extends View {
         @Override
         public void onSignal(String eventName, JSONObject jsonObject) {
           onReceiveNativeEvent(jsonObject, eventName);
+
+          //destroy when complete
+          if (eventName.equals("complete")) {
+            mCheckout.destroy();
+          }
         }
       });
       View klarnaView = mCheckout.getView();
